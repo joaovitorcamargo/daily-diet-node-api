@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "176957f2-9487-434a-a706-d285b5b0a2c0",
+		"name": "Daily Diet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10580830"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"João Juquinha\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{users}}",
+							"host": [
+								"{{users}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{users}}",
+							"host": [
+								"{{users}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"4a68fcc8-3697-45c5-8ecc-963b41f0b11d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{users}}/auth",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Meals By User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{users}}/get-all-meals",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"get-all-meals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Metric",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{users}}/metric",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"metric"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Meals",
+			"item": [
+				{
+					"name": "Create Meal",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Teste 2\",\r\n    \"description\": \"Pedaços de calabres\",\r\n    \"allowed_meal\": true,\r\n    \"date\": \"25/08/2023\",\r\n    \"time\": \"17:43\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{meals}}",
+							"host": [
+								"{{meals}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Meals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{meals}}",
+							"host": [
+								"{{meals}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Meal By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{meals}}/2363eea3-61b3-4d91-8fde-9738952dc2f3",
+							"host": [
+								"{{meals}}"
+							],
+							"path": [
+								"2363eea3-61b3-4d91-8fde-9738952dc2f3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Meal",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Feijoada Filés de Merluza com Rocambole \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{meals}}/40af9889-8674-4faf-a849-34183c6a5c54",
+							"host": [
+								"{{meals}}"
+							],
+							"path": [
+								"40af9889-8674-4faf-a849-34183c6a5c54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Meal",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{meals}}/a0970fe5-7fcc-4c5d-94b1-496364db010b",
+							"host": [
+								"{{meals}}"
+							],
+							"path": [
+								"a0970fe5-7fcc-4c5d-94b1-496364db010b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
