@@ -57,6 +57,23 @@ export async function mealsRoutes(app: FastifyInstance) {
 
     return reply.status(201).send()
   })
+  
+  app.delete('/:id', {
+    preHandler: [checkSession, checkUser]
+  }, async (request, reply) => {
+    const idSchemaParams = z.object({
+      id: z.string().uuid()
+    })
+
+    const {id} = idSchemaParams.parse(request.params)
+
+    await knex.transaction(async (action) => {
+      await action('user_meals').where({ meal_id: id }).del();
+      await action('meals').where({ id: id }).del();
+    });
+
+    return reply.status(200).send('Deletado com sucesso');
+  })
 
   app.put('/:id', {
     preHandler: [checkSession, checkUser]
@@ -80,13 +97,14 @@ export async function mealsRoutes(app: FastifyInstance) {
       const getDataToChange = bodySchema.parse(request.body)
 
       await knex('meals').where('id', id).update(getDataToChange)
+ 
     }
     return reply.status(200).send()
 
   })
 
   app.get('/:id', {
-    preHandler: [checkSession]
+    preHandler: [checkSession, checkUser]
   }, async(request) => {
     const paramsSchema = z.object({
       id: z.string().uuid()
