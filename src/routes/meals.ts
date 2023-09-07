@@ -3,7 +3,6 @@ import {knex} from '../database'
 import { randomUUID } from 'crypto';
 import { z } from 'zod';
 import { checkSession } from '../middlewares/check-session';
-import { app } from '../app';
 import { checkUser } from '../middlewares/check-user-is-valid';
 
 export async function mealsRoutes(app: FastifyInstance) {

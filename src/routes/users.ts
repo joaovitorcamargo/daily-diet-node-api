@@ -40,4 +40,29 @@ export async function usersRoutes(app: FastifyInstance) {
 
     return reply.status(201).send()
   })
+
+  app.put('/auth', async (request, reply) => {
+
+    const bodySchema = z.object({
+      id: z.string().uuid()
+    })
+
+    const {id} = bodySchema.parse(request.body);
+
+    const session = {
+      id: ''
+    }
+
+    session.id = randomUUID()
+    reply.cookie('sessionId', session.id, {
+      path: '/',
+      maxAge: 1000 * 60 * 60 * 24 * 7 //7 DIAS,
+    })
+
+    await knex('users').where('id', id).update({
+      'session_id': session.id
+    })
+
+    return reply.status(200).send('User Authorized')
+  })
 }
