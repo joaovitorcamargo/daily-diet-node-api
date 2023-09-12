@@ -98,8 +98,7 @@ export async function usersRoutes(app: FastifyInstance) {
       .join('meals', 'meals.id', 'user_meals.meal_id')
       .where('users.session_id', sessionId).first();
 
-    console.log(query)
-    
+    return query
   })
 
 }
